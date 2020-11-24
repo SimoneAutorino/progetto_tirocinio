@@ -34,7 +34,7 @@ print("Mi connetto al server MQTT...")
 client = mqtt.Client()
 client.username_pw_set(username="progetto", password="tirocinio")
 client.on_message = on_message
-client.connect("localhost", 1883, 60)
+client.connect("52.232.110.113", 1883, 60)
 client.subscribe("/dev/esp8266/accessi",2)
 print("Connesso")
 
