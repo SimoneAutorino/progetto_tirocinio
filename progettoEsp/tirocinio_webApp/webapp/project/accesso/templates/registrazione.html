@@ -1,0 +1,60 @@
+{%extends "base.html" %}
+{% block head %}
+
+<title>Registrazione</title>
+
+{% endblock head %}
+
+
+{% block body %}
+
+<form action={% url 'registrazione' %} method="POST">
+    <h2>Registrazione Dipendenti</h2>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <h3>Nome Dipendente: </h3>
+                </td>
+                <td>
+                    <h3>
+                        <input type="text" placeholder="Nome Dipendente" name="nome">
+                    </h3>
+                </td>
+            <tr>
+                <td>
+
+                    <h3>Cognome Dipendente: </h3>
+
+                </td>
+                <td>
+                    <h3><input type="text" placeholder="Cognome Dipendente" name="cognome"></h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Data di Nascita: </h3>
+                </td>
+                <td>
+                    <h3><input type="date" placeholder="Data Di Nascita" name="data"></h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h3><input type="submit" value="Salva" style="width: 300px;"></h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{risultato}}
+                </td>
+                <td>
+                    {{messaggio}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+{% endblock body %}

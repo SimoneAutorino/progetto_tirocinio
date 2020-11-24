@@ -1,0 +1,78 @@
+{%extends "base.html" %}
+{% block head %}
+
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+
+
+<title>Dipendenti</title>
+
+{% endblock head %}
+
+
+{% block body %}
+
+<h1>Datatable</h1>
+<form action={% url 'accessi' %} method="POST">
+<font color="black">
+    <table id="datatable" class="display" width="100%">
+        <thead>
+            <tr>
+                <th style="text-align: center;">ID</th>
+                <th style="text-align: center;">NOME</th>
+                <th style="text-align: center;">COGNOME</th>
+                <th style="text-align: center;">DATA DI NASCITA</th>
+                <th style="text-align: center;">TOKEN</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for dipendente in Dipendente %}
+            <tr>
+                {% for elem in dipendente %}
+                <td style="text-align: center;">{{elem}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th style="text-align: center;">ID</th>
+                <th style="text-align: center;">NOME</th>
+                <th style="text-align: center;">COGNOME</th>
+                <th style="text-align: center;">DATA DI NASCITA</th>
+                <th style="text-align: center;">TOKEN</th>
+
+            </tr>
+        </tfoot>
+    </table>
+    <h3>
+        <input type="text" placeholder="ID Dipendente" name="ID">
+    </h3>
+    <h3>
+        <input type="submit" value="Cerca" style="width: 300px;">
+    </h3>
+</form>
+</font>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('#datatable').DataTable({
+                colums: [
+                    { title: "ID" },
+                    { title: "NOME" },
+                    { title: "COGNOME" },
+                    { title: "DATA DI NASCITA" },
+                    { title: "TOKEN" }
+                ]
+            });
+        });
+    </script>
+
+{% endblock body %}

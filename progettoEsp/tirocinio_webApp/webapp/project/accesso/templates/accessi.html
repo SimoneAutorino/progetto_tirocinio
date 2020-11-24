@@ -1,0 +1,74 @@
+{%extends "base.html" %}
+{% block head %}
+
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<title>{{nome}}</title>
+
+{% endblock head %}
+
+
+{% block body %}
+
+<h1>Accessi {{nome}}:</h1>
+<form action={% url 'eliminazione' %} method="POST">
+<font color="black">
+    <table id="datatable" class="display" width="100%">
+        <thead>
+            <tr>
+                <th style="text-align: center;">ID</th>
+                <th style="text-align: center;">Data Entrata</th>
+                <th style="text-align: center;">Ora Entrata</th>
+                <th style="text-align: center;">Data Uscita</th>
+                <th style="text-align: center;">Ora Uscita</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for accesso in Accessi %}
+            <tr>
+                {% for elem in accesso %}
+                <td style="text-align: center;">{{elem}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th style="text-align: center;">ID</th>
+                <th style="text-align: center;">Data Entrata</th>
+                <th style="text-align: center;">Ora Entrata</th>
+                <th style="text-align: center;">Data Uscita</th>
+                <th style="text-align: center;">Ora Uscita</th>
+
+            </tr>
+        </tfoot>
+    </table>
+
+    
+        <input type="hidden" name="inputid" value="{{id}}">
+        <h3>
+            <input style="background-color: red; width: 300px;" type="submit" value="Elimina" style="width: 300px;">
+        </h3>
+        
+    </form>
+</font>
+<script>
+    $(document).ready(function () {
+
+        $('#datatable').DataTable({
+
+            colums: [
+                { title: "ID" },
+                { title: "Data Entrata" },
+                { title: "Ora Entrata" },
+                { title: "Data Uscita" },
+                { title: "Ora Uscita" }
+            ]
+        });
+    });
+</script>
+
+
+{% endblock body %}
